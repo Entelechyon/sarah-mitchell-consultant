@@ -2,6 +2,8 @@
 
 A professional, conversion-focused landing page for a business consultant with an AI-powered lead qualification chatbot.
 
+🌐 **Live Site**: [sarahmitchell.online](https://sarahmitchell.online)
+
 ## Features
 
 - **Professional Design**: Clean, corporate design with navy color scheme that builds trust and credibility
