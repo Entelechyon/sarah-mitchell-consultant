@@ -11,11 +11,72 @@ export default function Home() {
     setIsChatOpen(true);
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Sarah Mitchell Consulting",
+    description:
+      "Transform your business from chaos to cash flow in 90 days. Professional business consulting for ambitious business owners seeking operational efficiency and profit growth.",
+    url: "https://sarahmitchell.online",
+    logo: "https://sarahmitchell.online/sarah-mitchell.webp",
+    image: "https://sarahmitchell.online/sarah-mitchell.webp",
+    telephone: "",
+    email: "sarah@sarahmitchellconsulting.com",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "US",
+    },
+    founder: {
+      "@type": "Person",
+      name: "Sarah Mitchell",
+      jobTitle: "Business Consultant",
+      image: "https://sarahmitchell.online/sarah-mitchell.webp",
+      description:
+        "Business consultant with 15+ years of experience helping 200+ businesses achieve 25-40% profit improvements through operational optimization and strategic planning.",
+    },
+    priceRange: "$$$",
+    areaServed: {
+      "@type": "Country",
+      name: "United States",
+    },
+    serviceType: [
+      "Business Strategy & Planning",
+      "Operations Optimization",
+      "Growth Consulting",
+      "Cash Flow Management",
+      "Profit Improvement",
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      reviewCount: "200",
+    },
+    knowsAbout: [
+      "Business Strategy",
+      "Operations Management",
+      "Profit Optimization",
+      "Cash Flow Management",
+      "Business Growth",
+      "Process Improvement",
+    ],
+  };
+
   return (
     <>
-      <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* Skip to main content link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-navy-600 focus:text-white focus:rounded-lg"
+      >
+        Skip to main content
+      </a>
+      <main id="main-content" className="min-h-screen bg-white">
         {/* Navigation */}
-        <nav className="bg-white shadow-sm fixed w-full top-0 z-40">
+        <nav className="bg-white shadow-sm fixed w-full top-0 z-40" role="navigation" aria-label="Main navigation">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
@@ -24,8 +85,9 @@ export default function Home() {
               </div>
               <button
                 onClick={handleButtonClick}
-                className="bg-navy-600 text-white px-6 py-2 rounded-lg hover:bg-navy-700 transition-colors"
+                className="bg-navy-600 text-white px-6 py-2 rounded-lg hover:bg-navy-700 transition-colors focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2"
                 type="button"
+                aria-label="Book a consultation with Sarah Mitchell"
               >
                 Book Consultation
               </button>
@@ -58,7 +120,7 @@ export default function Home() {
               <div className="relative">
                 <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/sarah-mitchell.jpg"
+                    src="/sarah-mitchell.webp"
                     alt="Sarah Mitchell - Business Consultant"
                     width={600}
                     height={600}
@@ -112,7 +174,7 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-8">
               {/* Service 1 */}
               <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 bg-navy-100 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-navy-100 rounded-lg flex items-center justify-center mb-6" aria-hidden="true">
                   <svg className="w-8 h-8 text-navy-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
@@ -134,7 +196,7 @@ export default function Home() {
 
               {/* Service 2 */}
               <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 bg-navy-100 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-navy-100 rounded-lg flex items-center justify-center mb-6" aria-hidden="true">
                   <svg className="w-8 h-8 text-navy-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -157,7 +219,7 @@ export default function Home() {
 
               {/* Service 3 */}
               <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 bg-navy-100 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-navy-100 rounded-lg flex items-center justify-center mb-6" aria-hidden="true">
                   <svg className="w-8 h-8 text-navy-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>

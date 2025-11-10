@@ -1,0 +1,6 @@
+# robots.txt for Sarah Mitchell Consulting
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sarahmitchell.online/sitemap.xml

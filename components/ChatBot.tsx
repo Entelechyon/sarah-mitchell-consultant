@@ -91,13 +91,13 @@ export default function ChatBot({ isOpen, onClose }: ChatBotProps) {
       />
 
       {/* Chat Window */}
-      <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl flex flex-col h-[600px] max-h-[80vh]">
+      <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl flex flex-col h-[600px] max-h-[80vh]" role="dialog" aria-labelledby="chatbot-title" aria-modal="true">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-navy-600 to-navy-700 rounded-t-2xl">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden">
               <Image
-                src="/sarah-mitchell.jpg"
+                src="/sarah-mitchell.webp"
                 alt="Sarah Mitchell"
                 width={40}
                 height={40}
@@ -105,19 +105,21 @@ export default function ChatBot({ isOpen, onClose }: ChatBotProps) {
               />
             </div>
             <div>
-              <h3 className="font-bold text-white">Sarah Mitchell</h3>
+              <h3 id="chatbot-title" className="font-bold text-white">Sarah Mitchell</h3>
               <p className="text-sm text-gray-200">Business Consultant</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-white hover:bg-white/20 rounded-lg p-2 transition-colors"
+            className="text-white hover:bg-white/20 rounded-lg p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Close chat"
           >
             <svg
               className="w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -130,7 +132,7 @@ export default function ChatBot({ isOpen, onClose }: ChatBotProps) {
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-6 space-y-4" role="log" aria-live="polite" aria-label="Chat messages">
           {messages.map((message, index) => (
             <div
               key={index}
@@ -165,8 +167,12 @@ export default function ChatBot({ isOpen, onClose }: ChatBotProps) {
 
         {/* Input */}
         <div className="p-6 border-t border-gray-200">
-          <div className="flex gap-2">
+          <form onSubmit={(e) => { e.preventDefault(); sendMessage(); }} className="flex gap-2">
+            <label htmlFor="chat-input" className="sr-only">
+              Type your message
+            </label>
             <input
+              id="chat-input"
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -174,15 +180,18 @@ export default function ChatBot({ isOpen, onClose }: ChatBotProps) {
               placeholder="Type your message..."
               disabled={isLoading}
               className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy-500 focus:border-transparent disabled:bg-gray-100"
+              aria-label="Chat message input"
             />
             <button
+              type="submit"
               onClick={sendMessage}
               disabled={isLoading || !input.trim()}
-              className="px-6 py-3 bg-navy-600 text-white rounded-lg hover:bg-navy-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+              className="px-6 py-3 bg-navy-600 text-white rounded-lg hover:bg-navy-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2"
+              aria-label="Send message"
             >
               Send
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
